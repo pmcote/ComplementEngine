@@ -14,7 +14,7 @@ def index():
         firstNAME = facebook_profile['first_name']
         lastNAME = facebook_profile['last_name']
         userNAME = firstNAME + lastNAME
-        user = User(user_id=userID, usertoken=oauth_token, user_name=userNAME)
+        user = User(user_id=userID, user_token=oauth_token, user_name=userNAME)
         user.save()
 
         ex = User.objects(username = 'Alisoniscute').first() #Also .all
