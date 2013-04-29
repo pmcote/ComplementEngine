@@ -7,3 +7,7 @@ class User(db.Document):
     user_id = db.StringField(required=True)
     user_token = db.StringField(required=True)
     user_name = db.StringField(required=True)
+
+
+class Complement(db.document):
+	complement = db.StringField(required=True)

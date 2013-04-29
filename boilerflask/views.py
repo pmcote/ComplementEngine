@@ -47,6 +47,8 @@ def notifier():
     if not 'oauth_token' in session:
         return redirect(url_for('login'))
 
+    
+
     res = requests.get("https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&grant_type=client_credentials" % (app.config['FACEBOOK_APP_ID'], app.config['FACEBOOK_APP_SECRET']))
     app_access_token = res.content.split('=')[1]
     param_string = urllib.urlencode({"access_token":app_access_token, "template":"GURL I KNOW YOU WANT THIS DICK!"}, True) #these have to be encoded in the url, urllib does this for us :-)
@@ -57,3 +59,12 @@ def notifier():
     print res.content
 
     return "TEST"
+
+
+
+
+
+
+
+
+
