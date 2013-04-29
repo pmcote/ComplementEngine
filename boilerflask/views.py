@@ -3,6 +3,7 @@ from boilerflask import app, facebook
 from facebook_helper import *
 import requests
 import urllib
+import random
 from boilerflask.models import *
 
 
@@ -47,11 +48,15 @@ def notifier():
     if not 'oauth_token' in session:
         return redirect(url_for('login'))
 
+    compliments_list = ["Baby, somebody better call God, cuz he's missing an angel!", 
+                "Are you a tamale? Cause you're hot.", 
+                "Apart from being sexy, what do you do for a living?"]
+
     #Getting the access token to send notifications
     res = requests.get("https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&grant_type=client_credentials" % (app.config['FACEBOOK_APP_ID'], app.config['FACEBOOK_APP_SECRET']))
     app_access_token = res.content.split('=')[1]
-    param_string = urllib.urlencode({"access_token":app_access_token, "template":"Baby, somebody better call God, cuz he's missing an angel!"}, True) #these have to be encoded in the url, urllib does this for us :-)
-    
+    param_string = urllib.urlencode({"access_token":app_access_token, "template":random.choice(compliments_list)}, True) #these have to be encoded in the url, urllib does this for us :-)
+
     #sending a notification
     user_id = '1505822341' # Paige's user id
     res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
