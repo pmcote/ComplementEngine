@@ -19,6 +19,11 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'something local maybe?'
     FACEBOOK_APP_SECRET = "067838d5036c5db87ae2c21a3a37b3b5" #Example variables which change with environment
     FACEBOOK_APP_ID = "587574061260748"
+    MONGODB_DB = "silly"
+    MONGODB_USERNAME = ""
+    MONGODB_PASSWORD = ""
+    MONGODB_HOST = "localhost"
+    MONGODB_PORT = "27017"
 
 
 class ProductionConfig(DevelopmentConfig):
