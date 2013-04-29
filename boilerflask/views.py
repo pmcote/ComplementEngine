@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from boilerflask import app, facebook
 from facebook_helper import *
+from boilerflask.models import *
 
 @app.route('/', methods=['GET'] )
 def index():
@@ -9,6 +10,12 @@ def index():
     else:
 
         facebook_profile = facebook.get('/me')
+        user = User(username='Alisoniscute', email='djkafhskjdfl@gmail.com')
+        user.save()
+
+        ex = User.objects(username = 'Alisoniscute').first() #Also .all
+        print ex.username
+
 
         if facebook_profile.status == 200: #200 means success
             facebook_profile =  facebook_profile.data
