@@ -54,7 +54,12 @@ def notifier():
 
     compliments_list = ["Baby, somebody better call God, cuz he's missing an angel!", 
                 "Are you a tamale? Cause you're hot.", 
-                "Apart from being sexy, what do you do for a living?"]
+                "Apart from being sexy, what do you do for a living?",
+                "Did it hurt? when you fell from heaven.",
+                "Damn, if being sexy was a crime, you'd be guilty as charged!",
+                "Baby, if you were words on a page, you'd be what they call fine print.",
+                "Baby, you must be a broom, cause you just swept me off my feet.",
+                "Did the sun come out or did you just smile at me?"]
 
     #Getting the access token to send notifications
     res = requests.get("https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&grant_type=client_credentials" % (app.config['FACEBOOK_APP_ID'], app.config['FACEBOOK_APP_SECRET']))
