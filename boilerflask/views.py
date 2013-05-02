@@ -35,6 +35,7 @@ def index():
         
         if notifications.status == 200: #200 means success
             notifications =  notifications.data
+            #if you don't have notifications, run the notifier
             if notifications['data'] == []:
                 notifier()
         else:
