@@ -64,7 +64,7 @@ def notifier():
     res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
     print res.content
 
-    return "TEST"
+    return "HAVE MY BABIES"
 
 
 

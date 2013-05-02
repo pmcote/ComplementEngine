@@ -11,6 +11,7 @@ app.config.from_object(__cfg)
 app.configType = __cfg
 
 db = MongoEngine(app) #this is our database
+
 oauth = OAuth()
 
 facebook = oauth.remote_app('facebook', #facebook is an object that will allow flask-oauth to be useful

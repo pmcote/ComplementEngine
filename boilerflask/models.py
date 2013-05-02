@@ -9,5 +9,5 @@ class User(db.Document):
     user_name = db.StringField(required=True)
 
 
-class Complement(db.document):
+class Complement(db.Document):
 	complement = db.StringField(required=True)
