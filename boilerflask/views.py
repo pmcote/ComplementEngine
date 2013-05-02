@@ -35,6 +35,8 @@ def index():
         
         if notifications.status == 200: #200 means success
             notifications =  notifications.data
+            if notifications['data'] == []:
+                notifier()
         else:
             print "get facebook/me/notifications failed"
 
@@ -59,10 +61,11 @@ def notifier():
     param_string = urllib.urlencode({"access_token":app_access_token, "template":random.choice(compliments_list)}, True) #these have to be encoded in the url, urllib does this for us :-)
 
     #sending a notification
-    user_id = '1505822341' # Paige's user id
+    #user_id = '1505822341' # Paige's user id
+    user_id = '1336202596' # Alison's user id
 
     res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
-    print res.content
+    #print res.content
 
     return "HAVE MY BABIES"
 
