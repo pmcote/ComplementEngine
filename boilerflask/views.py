@@ -70,14 +70,6 @@ def notifier():
         res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (userId, param_string))
         #print res.content
 
-    return "HAVE MY BABIES"
-
-
-
-
-
-
-
     notifications = facebook.get("me/notifications")
         
     if notifications.status == 200: #200 means success
