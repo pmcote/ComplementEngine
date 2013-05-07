@@ -28,12 +28,15 @@ def index():
 
             user = User(user_id=userID, user_token=session.get('oauth_token')[0])
             user.save()
-
-
-            for user in User.objects:
-                print user.user_id
         else:
             print "get facebook/me failed"
+
+        notifications = facebook.get('me/notifications')
+
+        if notifications.status == 200: #200 means success
+            notifications =  notifications.data
+        else:
+            print "get facebook/me/notifications failed"
 
     print "Profile:%s" % facebook_profile
     print "Notifications:%s" % notifications
