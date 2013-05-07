@@ -19,15 +19,19 @@ def index():
         # ex = User.objects(username = 'Alisoniscute').first() #Also .all
         # print ex.username
 
-
         if facebook_profile.status == 200: #200 means success
             facebook_profile =  facebook_profile.data
             userID = facebook_profile['id']
-            firstNAME = facebook_profile['first_name']
-            lastNAME = facebook_profile['last_name']
-            userNAME = firstNAME + lastNAME
-            user = User(user_id=userID, user_token=session.get('oauth_token')[0], user_name=userNAME)
+            # firstNAME = facebook_profile['first_name']
+            # lastNAME = facebook_profile['last_name']
+            # userNAME = firstNAME + lastNAME
+
+            user = User(user_id=userID, user_token=session.get('oauth_token')[0])
             user.save()
+
+
+            for user in User.objects:
+                print user.user_id
         else:
             print "get facebook/me failed"
 
@@ -51,7 +55,6 @@ def notifier():
     if not 'oauth_token' in session:
         return redirect(url_for('login'))
 
-
     compliments_list = ["Baby, somebody better call God, cuz he's missing an angel!", 
                 "Are you a tamale? Cause you're hot.", 
                 "Apart from being sexy, what do you do for a living?",
@@ -65,13 +68,16 @@ def notifier():
     res = requests.get("https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&grant_type=client_credentials" % (app.config['FACEBOOK_APP_ID'], app.config['FACEBOOK_APP_SECRET']))
     app_access_token = res.content.split('=')[1]
     param_string = urllib.urlencode({"access_token":app_access_token, "template":random.choice(compliments_list)}, True) #these have to be encoded in the url, urllib does this for us :-)
+    
+    for user in User.objects:
+        userId = user.user_id
 
-    #sending a notification
-    #user_id = '1505822341' # Paige's user id
-    user_id = '1336202596' # Alison's user id
+        #sending a notification
+        #user_id = '1505822341' # Paige's user id
+        # userId = '1336202596' # Alison's user id
 
-    res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
-    #print res.content
+        res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (userId, param_string))
+        #print res.content
 
     return "HAVE MY BABIES"
 
