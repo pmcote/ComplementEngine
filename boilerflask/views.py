@@ -35,16 +35,6 @@ def index():
         else:
             print "get facebook/me failed"
 
-        notifications = facebook.get("me/notifications")
-        
-        if notifications.status == 200: #200 means success
-            notifications =  notifications.data
-            #if you don't have notifications, run the notifier
-            if notifications['data'] == []:
-                notifier()
-        else:
-            print "get facebook/me/notifications failed"
-
     print "Profile:%s" % facebook_profile
     print "Notifications:%s" % notifications
 
@@ -76,6 +66,7 @@ def notifier():
         #user_id = '1505822341' # Paige's user id
         # userId = '1336202596' # Alison's user id
 
+
         res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (userId, param_string))
         #print res.content
 
@@ -87,5 +78,18 @@ def notifier():
 
 
 
+    notifications = facebook.get("me/notifications")
+        
+    if notifications.status == 200: #200 means success
+        notifications =  notifications.data
+        #if you don't have notifications, run the notifier
+        if notifications['data'] == []:
+            res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
+    else:
+        print "get facebook/me/notifications failed"
 
 
+    #res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
+    #print res.content
+
+    return "HAVE MY BABIES"
