@@ -31,8 +31,6 @@ class ProductionConfig(DevelopmentConfig):
     '''
     Extends and overrides declarations from the DevelopmentConfiguration
     '''
-    DEBUG = False
-
     url = urlparse.urlparse(os.environ.get("MONGOHQ_URL", "FAILED TO GET MONGOHQURL"))
     MONGODB_DB = url.path[1:]
     MONGODB_USERNAME = url.username
