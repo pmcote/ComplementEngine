@@ -83,7 +83,7 @@ def notifier():
         notifications =  notifications.data
         #if you don't have notifications, run the notifier
         if notifications['data'] == []:
-            res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
+            res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (userId, param_string))
     else:
         print "get facebook/me/notifications failed"
 
