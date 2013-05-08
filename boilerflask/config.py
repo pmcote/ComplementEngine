@@ -31,6 +31,16 @@ class ProductionConfig(DevelopmentConfig):
     Extends and overrides declarations from the DevelopmentConfiguration
     '''
     DEBUG = False
+
+    url = urlparse.urlparse(os.environ.get("MONGOHQ_URL", "FAILED TO GET MONGOHQURL"))
+    MONGODB_DB = url.path[1:]
+    MONGODB_USERNAME = url.username
+    MONGODB_PASSWORD = url.password
+    MONGODB_HOST = url.hostname
+    MONGODB_PORT = url.port
+    FACEBOOK_APP_SECRET = "87be773b3a871485f634c85d831ee752"
+    FACEBOOK_APP_ID = "581157881916787"
+
     # FACEBOOK_APP_SECRET = "XXX" Example variables which change with environment
     # FACEBOOK_APP_ID = "XX"
     # SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_ROSE_URL")
