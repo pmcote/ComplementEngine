@@ -31,7 +31,7 @@ def index():
             else:
                 user = User(user_id=userID, user_token=session.get('oauth_token')[0])
                 user.save()
-                
+
         else:
             print "get facebook/me failed"
 
@@ -74,7 +74,7 @@ def notifier():
         # userId = '1336202596' # Alison's user id
 
 
-        res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (userId, param_string))
+        #res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (userId, param_string))
         #print res.content
 
     notifications = facebook.get("me/notifications")
