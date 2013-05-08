@@ -1,4 +1,5 @@
 import os
+import urlparse
 
 class Config(object):
     """
