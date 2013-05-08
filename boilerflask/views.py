@@ -26,8 +26,12 @@ def index():
             # lastNAME = facebook_profile['last_name']
             # userNAME = firstNAME + lastNAME
 
-            user = User(user_id=userID, user_token=session.get('oauth_token')[0])
-            user.save()
+            if len(User.objects(user_id=userID)) > 0:
+                pass
+            else:
+                user = User(user_id=userID, user_token=session.get('oauth_token')[0])
+                user.save()
+                
         else:
             print "get facebook/me failed"
 
