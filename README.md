@@ -1,4 +1,4 @@
-BoilerFlask
+Compliment Engine
 ============
 
 A simple boilerplate Flask application. This base reduces the amount of code I need to write from scratch. 
