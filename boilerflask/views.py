@@ -53,8 +53,8 @@ def index():
 
 @app.route('/notifier', methods=['GET'] )
 def notifier():
-    if not 'oauth_token' in session:
-        return redirect(url_for('login'))
+    #if not 'oauth_token' in session:
+        #return redirect(url_for('login'))
 
     compliments_list = ["Baby, somebody better call God, cuz he's missing an angel!", 
                 "Are you a tamale? Cause you're hot.", 
