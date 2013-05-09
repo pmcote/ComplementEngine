@@ -59,7 +59,8 @@ def notifier():
                 "Damn, if being sexy was a crime, you'd be guilty as charged!",
                 "Baby, if you were words on a page, you'd be what they call fine print.",
                 "Baby, you must be a broom, cause you just swept me off my feet.",
-                "Did the sun come out or did you just smile at me?"]
+                "Did the sun come out or did you just smile at me?",
+                "Is your sin pi/2? Becuase you're the one."]
 
     #Getting the access token to send notifications
     res = requests.get("https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&grant_type=client_credentials" % (app.config['FACEBOOK_APP_ID'], app.config['FACEBOOK_APP_SECRET']))
@@ -91,4 +92,4 @@ def notifier():
     #res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (user_id, param_string))
     #print res.content
 
-    return "The Notifier has run"
+    return "HAVE MY BABIES!"
