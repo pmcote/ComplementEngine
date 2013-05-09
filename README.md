@@ -1,5 +1,4 @@
-Compliment Engine
-A Spring 2013 Software Design project by Paige Cote, Alison Berkowitz, and Jessica Diller
+Compliment Engine: A Spring 2013 Software Design project by Paige Cote, Alison Berkowitz, and Jessica Diller
 ============
 
 Our App:

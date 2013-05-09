@@ -7,7 +7,11 @@ import random
 from boilerflask.models import *
 
 
-@app.route('/', methods=['GET'] )
+@app.route('/', methods=['GET'])
+def reroute():
+    return render_template('home.html')
+
+@app.route('/index', methods=['GET'] )
 def index():
     if not 'oauth_token' in session:
         return redirect(url_for('login'))
@@ -25,12 +29,12 @@ def index():
             # firstNAME = facebook_profile['first_name']
             # lastNAME = facebook_profile['last_name']
             # userNAME = firstNAME + lastNAME
-
-            if len(User.objects(user_id=userID)) > 0:
-                pass
-            else:
-                user = User(user_id=userID, user_token=session.get('oauth_token')[0])
-                user.save()
+            for user in User.objects:
+                if userID == user.user_id:
+                    pass
+                else:
+                    user = User(user_id=userID, user_token=session.get('oauth_token')[0])
+                    user.save()
 
         else:
             print "get facebook/me failed"
@@ -69,10 +73,6 @@ def notifier():
     
     for user in User.objects:
         userId = user.user_id
-
-        #sending a notification
-        #user_id = '1505822341' # Paige's user id
-        # userId = '1336202596' # Alison's user id
 
 
         #res = requests.post("https://graph.facebook.com/%s/notifications?%s" % (userId, param_string))
